@@ -55,7 +55,7 @@ pipeline {
                 mail to: "ryan.belbachir01@gmail.com",
                 subject: "Deployment succeeded",
                 body: "Deployment succeeded"
-                notifyEvents message: 'Hello folks : <b>Deployment succeeded</b> ! ', token: 'U0EjI1wk1BDWAgmpAElBmcxuXNBVyHmo'
+                //notifyEvents message: 'Hello folks : <b>Deployment succeeded</b> ! ', token: 'U0EjI1wk1BDWAgmpAElBmcxuXNBVyHmo'
               }
     }
 
