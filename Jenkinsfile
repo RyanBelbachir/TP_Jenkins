@@ -4,6 +4,16 @@ pipeline {
       stage ('Test') {
           steps {
             bat 'gradle test';
+            bat 'gradle check';
+            cucumber buildStatus: 'UNSTABLE',
+                                  fileIncludePattern: '**/*.json',
+                                  trendsLimit: 10,
+                                  classifications: [
+                                      [
+                                          'key': 'Browser',
+                                          'value': 'Firefox'
+                                      ]
+                                  ]
           }
       }
 }
