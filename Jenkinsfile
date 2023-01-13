@@ -52,7 +52,7 @@ pipeline {
               }
               success {
                 echo "Deployment succeeded";
-                mail to: "ryan.belbachir01@gmail.com",
+                mail to: "jr_belbachir@esi.dz",
                 subject: "Deployment succeeded",
                 body: "Deployment succeeded"
                 //notifyEvents message: 'Hello folks : <b>Deployment succeeded</b> ! ', token: 'U0EjI1wk1BDWAgmpAElBmcxuXNBVyHmo'
