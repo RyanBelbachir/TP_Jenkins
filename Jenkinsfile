@@ -28,6 +28,12 @@ pipeline {
             waitForQualityGate abortPipeline: true;
           }
       }
+      stage ("Build") {
+        steps {
+            bat "gradle jar";
+            bat "gradle javadoc";
+        }
+      }
 }
 
 }
