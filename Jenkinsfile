@@ -34,11 +34,11 @@ pipeline {
             bat "gradle javadoc";
         }
       }
-      stage ("Deploy") {
+      /*stage ("Deploy") {
         steps {
             bat "gradle publish";
         }
-      }
+      }*/
 }
 
 }
