@@ -39,24 +39,24 @@ pipeline {
             bat "gradle publish";
         }
       }
-      post {
-          always {
-            echo "Build stage complete"
-          }
-          failure {
-            echo "Deployment failed"
-            mail to: "ryan.belbachir01@gmail.com",
-            subject: "Deployment failed",
-            body: "Deployment failed"
-          }
-          success {
-            echo "Deployment succeeded";
-            mail to: "ryan.belbachir01@gmail.com",
-            subject: "Deployment succeeded",
-            body: "Deployment succeeded"
-            notifyEvents message: 'Hello folks : <b>Deployment succeeded</b> ! ', token: 'U0EjI1wk1BDWAgmpAElBmcxuXNBVyHmo'
-          }
-      }
-}
+    }
+    post {
+              always {
+                echo "Build stage complete"
+              }
+              failure {
+                echo "Deployment failed"
+                mail to: "ryan.belbachir01@gmail.com",
+                subject: "Deployment failed",
+                body: "Deployment failed"
+              }
+              success {
+                echo "Deployment succeeded";
+                mail to: "ryan.belbachir01@gmail.com",
+                subject: "Deployment succeeded",
+                body: "Deployment succeeded"
+                notifyEvents message: 'Hello folks : <b>Deployment succeeded</b> ! ', token: 'U0EjI1wk1BDWAgmpAElBmcxuXNBVyHmo'
+              }
+    }
 
 }
