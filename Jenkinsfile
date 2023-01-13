@@ -18,7 +18,9 @@ pipeline {
       }
       stage ('Code Analysis') {
           steps {
-            bat 'gradle sonarqube';
+            withSonarQubeEnv('SonarQube') {
+                bat "gradle sonarqube";
+            }
           }
       }
       stage("Quality gate") {
