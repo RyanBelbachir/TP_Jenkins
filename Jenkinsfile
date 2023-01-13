@@ -42,20 +42,19 @@ pipeline {
     }
     post {
               always {
-                echo "End of Pipeline process";
+                echo "End of Pipeline process"
                 mail to: "ryan.belbachir01@gmail.com",
-                subject: "Deployment succeeded",
-                body: "Deployment succeeded"
-                notifyEvents message: 'Hello folks : <b>Deployment succeeded</b> ! ', token: 'svbrtyzyxorvratd'
+                                subject: "Deployment succeeded",
+                                body: "Deployment succeeded"
               }
               failure {
-                echo "Deployment failed";
+                echo "Deployment failed"
                 mail to: "ryan.belbachir01@gmail.com",
                 subject: "Deployment failed",
                 body: "Deployment failed"
               }
               success {
-                echo "Deployment succeeded";
+                echo "Deployment succeeded"
                 mail to: "ryan.belbachir01@gmail.com",
                 subject: "Deployment succeeded",
                 body: "Deployment succeeded"
