@@ -14,6 +14,7 @@ pipeline {
                                           'value': 'Firefox'
                                       ]
                                   ]
+            echo currentBuild.result
           }
       }
       stage ('Code Analysis') {
@@ -21,17 +22,20 @@ pipeline {
             withSonarQubeEnv('SonarQube') {
                 bat "gradle sonarqube";
             }
+            echo currentBuild.result
           }
       }
       stage("Quality gate") {
           steps {
             waitForQualityGate abortPipeline: true;
+            echo currentBuild.result
           }
       }
       stage ("Build") {
         steps {
             bat "gradle jar";
             bat "gradle javadoc";
+            echo currentBuild.result
         }
       }
       /*stage ("Deploy") {
