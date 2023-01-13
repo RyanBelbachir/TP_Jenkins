@@ -43,9 +43,6 @@ pipeline {
     post {
               always {
                 echo "End of Pipeline process"
-                mail to: "ryan.belbachir01@gmail.com",
-                                subject: "Deployment succeeded",
-                                body: "Deployment succeeded"
               }
               failure {
                 echo "Deployment failed"
@@ -56,8 +53,8 @@ pipeline {
               success {
                 echo "Deployment succeeded"
                 mail to: "ryan.belbachir01@gmail.com",
-                subject: "Deployment succeeded",
-                body: "Deployment succeeded"
+                                                subject: "Deployment succeeded",
+                                                body: "Deployment succeeded"
                 notifyEvents message: 'Hello folks : <b>Deployment succeeded</b> ! ', token: 'svbrtyzyxorvratd'
               }
     }
