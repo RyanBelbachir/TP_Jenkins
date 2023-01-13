@@ -43,6 +43,7 @@ pipeline {
     post {
               always {
                 echo "End of Pipeline process"
+                echo currentBuild.result
               }
               failure {
                 echo "Deployment failed"
