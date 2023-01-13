@@ -5,7 +5,7 @@ pipeline {
           steps {
             bat 'gradle test';
             bat 'gradle check';
-            
+
           }
       }
       stage ('Code Analysis') {
@@ -48,7 +48,7 @@ post {
         mail to: "ryan.belbachir01@gmail.com",
                                         subject: "Deployment succeeded",
                                         body: "Deployment succeeded"
-        notifyEvents message: 'Hello folks : <b>Deployment succeeded</b> ! ', token: 'svbrtyzyxorvratd'
+        notifyEvents message: 'Hello folks : <b>Deployment succeeded</b> ! ', token: 'U0EjI1wk1BDWAgmpAElBmcxuXNBVyHmo'
       }
     }
 }
