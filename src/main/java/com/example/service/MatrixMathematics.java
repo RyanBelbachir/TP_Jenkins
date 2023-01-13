@@ -3,6 +3,8 @@ package com.example.service;
 import com.example.exception.NoSquareException;
 import com.example.model.Matrix;
 
+import static java.lang.Double.NaN;
+
 public class MatrixMathematics {
 
 	/**
@@ -32,7 +34,12 @@ public class MatrixMathematics {
 		for (int i=0; i<matrix.getNcols(); i++) {
 			sum += changeSign(i) * matrix.getValueAt(0, i) * determinant(createSubMatrix(matrix, 0, i));
 		}
-		return sum;
+		if(sum != 0.0)
+		{
+			return sum;
+		}
+		return NaN;
+
 	}
 
 	/**
