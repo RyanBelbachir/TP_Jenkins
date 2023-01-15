@@ -5,8 +5,9 @@ pipeline {
           steps {
             bat 'gradle test';
             bat 'gradle check';
+            archiveArtifacts 'build/reports/tests/test';
             junit(testResults: 'build/reports/tests/test', allowEmptyResults: true)
-            cucumber 'target/report.json'
+            cucumber reportTitle: "CucumberReport", fileIncludePattern : '**/*.json'
           }
       }
       stage ('Code Analysis') {
@@ -23,9 +24,11 @@ pipeline {
       }
       stage ("Build") {
         steps {
+            bat "gradle build";
             bat "gradle jar";
             bat "gradle javadoc";
             archiveArtifacts 'build/libs/*.jar';
+            archiveArtifacts 'build/docs/javadoc/*';
         }
       }
       stage ("Deploy") {
@@ -37,7 +40,7 @@ pipeline {
 post {
       always {
         echo "End of Pipeline process"
-        mail(subject: 'Process Pipeline : Result incoming ...', body: 'Process Pipeline : Result incoming ...', from: 'jr_belbachir@esi.dz', to: 'ryan.belbachir01@gmail.com')
+        mail(subject: 'End of Process Pipeline : Result incoming ...', body: 'End of Process Pipeline : Result incoming ...', from: 'jr_belbachir@esi.dz', to: 'ryan.belbachir01@gmail.com')
       }
       failure {
         echo "Deployment failed"
