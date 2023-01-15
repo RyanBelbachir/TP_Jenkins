@@ -5,7 +5,8 @@ pipeline {
           steps {
             bat 'gradle test';
             bat 'gradle check';
-
+            junit(testResults: 'build/reports/tests/test', allowEmptyResults: true)
+            cucumber 'target/report.json'
           }
       }
       stage ('Code Analysis') {
@@ -24,6 +25,7 @@ pipeline {
         steps {
             bat "gradle jar";
             bat "gradle javadoc";
+            archiveArtifacts 'build/libs/*.jar';
         }
       }
       stage ("Deploy") {
@@ -35,19 +37,15 @@ pipeline {
 post {
       always {
         echo "End of Pipeline process"
-        echo currentBuild.result
+        mail(subject: 'Process Pipeline : Result incoming ...', body: 'Process Pipeline : Result incoming ...', from: 'jr_belbachir@esi.dz', to: 'ryan.belbachir01@gmail.com')
       }
       failure {
         echo "Deployment failed"
-        mail to: "ryan.belbachir01@gmail.com",
-        subject: "Deployment failed",
-        body: "Deployment failed"
+        mail(subject: 'Deployment failed', body: 'Deployment failed ', from: 'jr_belbachir@esi.dz', to: 'ryan.belbachir01@gmail.com')
       }
       success {
         echo "Deployment succeeded"
-        mail to: "ryan.belbachir01@gmail.com",
-                                        subject: "Deployment succeeded",
-                                        body: "Deployment succeeded"
+        mail(subject: 'Deployment succeeded', body: 'Deployment succeeded ', from: 'jr_belbachir@esi.dz', to: 'ryan.belbachir01@gmail.com')
         notifyEvents message: 'Hello folks : <b>Deployment succeeded</b> ! ', token: 'U0EjI1wk1BDWAgmpAElBmcxuXNBVyHmo'
       }
     }
