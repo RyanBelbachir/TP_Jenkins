@@ -6,7 +6,7 @@ pipeline {
             bat 'gradle test';
             bat 'gradle check';
             archiveArtifacts 'build/reports/tests/test/';
-            cucumber reportTitle: "CucumberReport", fileIncludePattern : '**/*.json'
+            cucumber reportTitle: "CucumberReport", fileIncludePattern : 'target/report.json'
           }
       }
       stage ('Code Analysis') {
