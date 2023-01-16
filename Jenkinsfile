@@ -5,7 +5,7 @@ pipeline {
           steps {
             bat 'gradle test';
             bat 'gradle check';
-            archiveArtifacts 'build/reports/tests/test/';
+            junit('build/test-results/tests/test/*.xml');
             cucumber reportTitle: "CucumberReport", fileIncludePattern : 'target/report.json'
           }
       }
